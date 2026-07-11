@@ -1,21 +1,16 @@
 public class test{
     public static void main(String[]args){
-        int [] arr = {3,1,2,5,9,7,8};
-        int n = arr.length;
+         int [] arr = {1,2,3,4,5,6,7,8,};
+         int n = arr.length;
 
-        int largest = arr[0];
-        int secondlargest = Integer.MIN_VALUE;
-        
-        for(int i = 0 ; i < n ; i++){
-            if(arr[i] > largest){
-                
-                secondlargest = largest;
-                largest  = arr[i];
+         boolean isSorted = true;
+
+         for(int i = 0 ; i < n-1 ; i++){
+            if(arr[i] > arr[i + 1]){
+                 isSorted = false;
+                 break;
             }
-            else if (arr[i] > secondlargest && arr[i] != largest){
-                secondlargest = arr[i];
-            }
-        }
-        System.out.println("The second largest element is :" + secondlargest);
+         }
+         System.out.println(isSorted);
     }
 }
