@@ -1,49 +1,43 @@
 import java.util.*;
+public class UnionOfSortedArrays {
+ public static void main(String[]args){
+    int [] arr1 = {1, 2, 3, 4, 5};
+    int [] arr2 = {1, 2, 7}; 
+    int n1 = arr1.length;
+    int n2 = arr2.length;
 
-class Solution {
-    public List<Integer> findUnion(int[] arr1, int[] arr2) {
+    ArrayList<Integer>result = new ArrayList<>();
 
-        List<Integer> union = new ArrayList<>();
+    int i = 0;
+    int j = 0;
 
-        int i = 0, j = 0;
-
-        while (i < arr1.length && j < arr2.length) {
-
-            if (arr1[i] < arr2[j]) {
-                if (!union.contains(arr1[i])) {
-                    union.add(arr1[i]);
-                }
-                i++;
-            } 
-            else if (arr1[i] > arr2[j]) {
-                if (!union.contains(arr2[j])) {
-                    union.add(arr2[j]);
-                }
-                j++;
-            } 
-            else {
-                if (!union.contains(arr1[i])) {
-                    union.add(arr1[i]);
-                }
-                i++;
-                j++;
-            }
-        }
-
-        while (i < arr1.length) {
-            if (!union.contains(arr1[i])) {
-                union.add(arr1[i]);
-            }
+    while(i<n1 && j<n2){
+        if(arr1[i] < arr2[j]){
+            result.add(arr1[i]);
             i++;
         }
-
-        while (j < arr2.length) {
-            if (!union.contains(arr2[j])) {
-                union.add(arr2[j]);
-            }
+        else if(arr1[i]>arr2[j]){
+            result.add(arr2[j]);
             j++;
         }
-
-        return union;
+        else{
+            result.add(arr1[i]);
+            i++;
+            j++;
+        }
     }
+    //dumping the rest of the elements from the both i and j into result.
+    while(i<n1){
+        result.add(arr1[i]);
+        i++;
+    }
+    while(j<n2){
+        result.add(arr2[j]);
+        j++;
+    }
+
+    System.out.println(result);
+
+ }
+    
 }
